@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('theretimeApp', ['ui.bootstrap']);
+angular.module('wtfTimeIsThatApp', ['ui.bootstrap']);
