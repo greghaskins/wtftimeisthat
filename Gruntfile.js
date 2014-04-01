@@ -327,6 +327,17 @@ module.exports = function (grunt) {
           base: 'dist'
       },
       src: ['**']
+    },
+    
+    appcache: {
+      options: {
+        basePath: 'dist'
+      },
+      all: {
+        dest: 'dist/cache.manifest',
+        cache: 'dist/**/*',
+        network: '*'
+      }
     }
 
   });
@@ -374,7 +385,8 @@ module.exports = function (grunt) {
     'uglify',
     'rev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'appcache'
   ]);
 
   grunt.registerTask('deploy', [
