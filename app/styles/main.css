@@ -18,12 +18,12 @@ header h1 {
   right: 15px;
   bottom: 15px;
   left: 15px;
-  padding-top: 26px; /* height of table header, less 2px border */
+  padding-top: 29px; /* height of table header, less 2px border */
 }
 
 .table-header-background {
   background-color: white;
-  height: 28px; /* height of table header */
+  height: 31px; /* height of table header */
   position: absolute;
   top: 0;
   right: 0;
