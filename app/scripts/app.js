@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('wtfTimeIsThatApp', ['ui.bootstrap']);
+angular.module('wtfTimeIsThatApp', []);
