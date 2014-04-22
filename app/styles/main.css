@@ -33,6 +33,7 @@ header h1 {
   bottom: 15px;
   left: 15px;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   border-top: 1px solid #DDD;
   border-bottom: 1px solid #DDD;
 }
