@@ -1,7 +1,12 @@
 'use strict';
 (function(angular) {
 
+  var HOURS_PER_DAY = 24;
   var MINUTES_PER_HOUR = 60;
+  var MINUTES_PER_DAY = MINUTES_PER_HOUR * HOURS_PER_DAY;
+
+  var MEANINGFUL_TIME_INTERVAL = 30;
+  var NUMBER_OF_MEANINGFUL_INTERVALS = MINUTES_PER_DAY / MEANINGFUL_TIME_INTERVAL;
 
   angular.module('wtfTimeIsThatApp')
     .controller('MainCtrl', ['$scope', 'meaningfulUTCTimes',
@@ -26,9 +31,6 @@
     ]);
 
   angular.module('wtfTimeIsThatApp').factory('clockTime', function() {
-
-    var HOURS_PER_DAY = 24;
-    var MINUTES_PER_DAY = MINUTES_PER_HOUR * HOURS_PER_DAY;
 
     var _makeClockTime = function(minutesIntoTheDay) {
       var _minutesIntoTheDay = minutesIntoTheDay;
@@ -55,8 +57,15 @@
     var currentClockTime = function() {
       var now = new Date();
       var hours = now.getUTCHours();
-      var minutesIntoTheDay = hours * MINUTES_PER_HOUR;
-      return _makeClockTime(minutesIntoTheDay);
+      var minutes = now.getUTCMinutes();
+      var minutesIntoTheDay = hours * MINUTES_PER_HOUR + minutes;
+      var roundedMinutesIntoTheDay = roundToMeaningfulInterval(minutesIntoTheDay);
+
+      return _makeClockTime(roundedMinutesIntoTheDay);
+    };
+
+    var roundToMeaningfulInterval = function(minutes) {
+      return roundToNearestInterval(minutes, MEANINGFUL_TIME_INTERVAL);
     };
 
     return currentClockTime;
@@ -68,8 +77,8 @@
         var currentUTCTime = clockTime();
 
         var utcTimes = [];
-        for (var hour = 0; hour < 24; hour++) {
-          var nextTime = currentUTCTime.addMinutes(hour * MINUTES_PER_HOUR);
+        for (var intervalNumber = 0; intervalNumber < NUMBER_OF_MEANINGFUL_INTERVALS; intervalNumber++) {
+          var nextTime = currentUTCTime.addMinutes(intervalNumber * MEANINGFUL_TIME_INTERVAL);
           utcTimes.push(nextTime);
         }
         return utcTimes;
@@ -98,5 +107,9 @@
     };
 
   });
+
+  function roundToNearestInterval(numberToRound, interval) {
+    return Math.round(numberToRound / interval) * interval;
+  }
 
 })(angular);
