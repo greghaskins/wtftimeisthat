@@ -11,6 +11,10 @@ body {
   line-height: 1.42857;
   color: #333;
 }
+header {
+  padding-left: 15px;
+  padding-right: 15px;
+}
 header h1 {
   line-height: 50px;
   font-size: 28px;
@@ -23,26 +27,32 @@ header h1 {
   right: 0;
   bottom: 0;
   left: 0;
-  padding-left: 15px;
-  padding-right: 15px;
 }
 .time-table {
   position: absolute;
   top: 81px;
-  right: 15px;
+  right: 0;
   bottom: 15px;
-  left: 15px;
+  left: 0;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  border-top: 1px solid #DDD;
-  border-bottom: 1px solid #DDD;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .fixed-header {
   position: absolute;
-  top: 49px;
+  top: 48px;
   left: 15px;
   right: 15px;
-  border-bottom: 1px solid #DDD;
+  border-bottom: 2px solid #DDD;
+}
+.fixed-footer {
+  position: absolute;
+  bottom: 0px;
+  height: 15px;
+  left: 15px;
+  right: 15px;
+  border-top: 1px solid #DDD;
 }
 td,
 th {
