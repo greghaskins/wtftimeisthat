@@ -27,7 +27,7 @@ header h1 {
   padding-right: 15px;
 }
 .time-table {
-  position: fixed;
+  position: absolute;
   top: 81px;
   right: 15px;
   bottom: 15px;
