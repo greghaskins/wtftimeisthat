@@ -1,9 +1,18 @@
 <header>
   <h1>WTF time is that??</h1>
 </header>
-<div class="table-responsive">
-  <table class="table table-bordered table-striped table-condensed">
-    <thead class="sticky">
+<div class="fixed-header">
+  <table class="table-bordered equal-columns">
+    <thead>
+      <tr>
+        <th ng-repeat="timeZone in timeZones">{{timeZone.name}}</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+<div class="time-table">
+  <table class="equal-columns table-bordered table-striped">
+    <thead class="hidden">
       <tr>
         <th ng-repeat="timeZone in timeZones">{{timeZone.name}}</th>
       </tr>
@@ -17,3 +26,4 @@
     </tbody>
   </table>
 </div>
+
