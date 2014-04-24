@@ -19,8 +19,8 @@
     </thead>
     <tbody>
       <tr ng-repeat="utcTime in utcTimes">
-        <td ng-repeat="timeZone in timeZones">
-          {{utcTime.addMinutes(timeZone.utcOffsetMinutes) | shortTimeFormat}}
+        <td ng-repeat="clockTime in convertToLocalClockTimes(utcTime)" ng-class="{night: clockTime.isLateAtNight()}">
+          {{clockTime | shortTimeFormat}}
         </td>
       </tr>
     </tbody>

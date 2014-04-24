@@ -27,6 +27,11 @@
         }];
 
         $scope.utcTimes = meaningfulUTCTimes();
+        $scope.convertToLocalClockTimes = function(utcClockTime) {
+          return $scope.timeZones.map(function(timeZone) {
+            return utcClockTime.addMinutes(timeZone.utcOffsetMinutes);
+          });
+        };
       }
     ]);
 
@@ -34,6 +39,9 @@
 
     var _makeClockTime = function(minutesIntoTheDay) {
       var _minutesIntoTheDay = minutesIntoTheDay;
+
+      var LATE_AT_NIGHT = 22 * MINUTES_PER_HOUR;
+      var EARLY_IN_MORNING = 7 * MINUTES_PER_HOUR;
 
       return {
         getHours: function() {
@@ -50,6 +58,12 @@
             newClockTimeMinutes += MINUTES_PER_DAY;
           }
           return _makeClockTime(newClockTimeMinutes);
+        },
+
+        isLateAtNight: function() {
+          var tooLate = _minutesIntoTheDay >= LATE_AT_NIGHT;
+          var tooEarly = _minutesIntoTheDay < EARLY_IN_MORNING;
+          return tooLate || tooEarly;
         }
       };
     };
