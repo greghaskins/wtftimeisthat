@@ -86,9 +86,9 @@ table.equal-columns th {
 .table-striped tr:nth-child(2n - 1) {
   background-color: #F9F9F9;
 }
-.table-striped tr:nth-child(2n - 1) td.night{
-  background-color: #EEE;
+.table-striped tr:nth-child(2n) td.night {
+  background-color: #EDEDED;
 }
-.table-striped tr:nth-child(2n) td.night{
+.table-striped tr:nth-child(2n - 1) td.night {
   background-color: #E9E9E9;
 }
